@@ -1,0 +1,82 @@
+.appShell {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: var(--color-bg);
+  transition: background var(--transition-normal);
+}
+
+.calendarCard {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-width: 960px;
+  height: 100%;
+  max-height: 720px;
+  background: var(--color-card);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  animation: scaleUp 0.4s var(--transition-spring) both;
+  transition:
+    background var(--transition-normal),
+    border-color var(--transition-normal);
+}
+
+.calendarPanel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--color-border);
+  transition: border-color var(--transition-normal);
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 860px) {
+  .appShell {
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .calendarCard {
+    flex-direction: column;
+    border-radius: 0;
+    max-height: none;
+    height: 100%;
+    border: none;
+    box-shadow: none;
+    animation: none;
+  }
+
+  .calendarPanel {
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
+    flex-shrink: 0;
+  }
+}
+
+@keyframes scaleUp {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
